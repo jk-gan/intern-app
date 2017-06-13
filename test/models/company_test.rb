@@ -18,4 +18,38 @@ class CompanyTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+  def setup
+    @status = [:pending, :rejected, :approved]
+  end
+
+  test "should be invalid without name" do
+    company = build(:company, name: nil)
+    assert_nil company.name
+    assert_equal false, company.valid?
+  end
+
+  test "should be invalid without description" do
+    company = build(:company, description: nil)
+    assert_nil company.description
+    assert_equal false, company.valid?
+  end
+
+  test "should be invalid without size" do
+    company = build(:company, size: nil)
+    assert_nil company.size
+    assert_equal false, company.valid?
+  end
+
+  test "should be invalid without website" do
+    company = build(:company, website: nil)
+    assert_nil company.website
+    assert_equal false, company.valid?
+  end
+
+  test "status should be in right index" do
+    @status.each_with_index do |item, index|
+      assert_equal Company.statuses[item], index
+    end
+  end
 end

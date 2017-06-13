@@ -13,4 +13,7 @@
 #
 
 class Company < ApplicationRecord
+  validates :name, :description, :size, :website, presence: true
+
+  enum status: [:pending, :rejected, :approved]
 end
