@@ -21,6 +21,10 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'annotate'
 gem 'simple_form'
+gem 'country_select'
+gem 'slim-rails'
+gem 'paperclip', '~> 5.1.0'
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
