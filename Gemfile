@@ -23,7 +23,7 @@ gem 'annotate'
 gem 'simple_form'
 gem 'country_select'
 gem 'slim-rails'
-gem 'paperclip', '~> 5.1.0'
+# gem 'paperclip', '~> 5.1.0'
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -44,6 +44,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
 end
 
 group :development do
