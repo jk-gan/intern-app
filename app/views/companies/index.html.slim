@@ -1,4 +1,71 @@
-h1 We are Kojo
-
-- @companies.each do |company|
-  = company.name
+.background
+	.ui.container
+		#navigation-menu.main-navbar
+			.ui.secondary.menu
+				.header.item Kojo 
+				.right.menu
+					a.item Home
+					a.item Messages 
+					a.item Friends
+					/ - if current_user
+					/ 	= link_to "Logout", destroy_user_session_path, method: "delete", class: 'ui item'
+					/ - else
+					/ 	= link_to "Sign in", new_user_session_path, class: 'ui item'
+					/ 	= link_to "Sign up", new_user_registration_path, class: 'ui item'	
+		.ui.centered.grid.jumbotron
+			.sixteen.wide.mobile.sixteen.wide.tablet.nine.wide.computer.column
+				.ui.embed.video
+					iframe width="560" height="315" src="https://www.youtube.com/embed/GgsbG3WEmHs" frameborder="0" allowfullscreen
+			.sixteen.wide.mobile.sixteen.wide.tablet.seven.wide.computer.column
+				.ui.segment
+					a href="https://www.youtube.com"
+						h3.header Does intenship paid really matter ?
+						p Graduating students with paid or unpaid internships on their résumé have a much better 
+						p.read-more Read More
+				.ui.segment
+					a href="https://www.youtube.com"
+						h3.header Finding a right company
+						p Anyone who has ever worked knows there's a lot more to job satisfaction than a paycheck. A workplace's 
+						p.read-more Read More
+				.ui.segment
+					a href="https://www.youtube.com"
+						h3.header Get Ready for Internship (Preparation Tips)
+						p One thing all students should consider before even starting their summer internship is what 
+						p.read-more Read More
+		.ui#main-header
+			h1.ui.center.aligned.header 
+				| We are Kojo
+				.sub.header No more getting lost. Find a best intern job and get hired.
+			.ui.centered.grid
+				.five.wide.tablet.three.wide.computer.column
+					p.course Artificial Intelligence
+				.five.wide.tablet.three.wide.computer.column
+					p.course Computer Security
+				.five.wide.tablet.three.wide.computer.column
+					p.course Game Technology
+				.five.wide.tablet.three.wide.computer.column
+					p.course Software Development
+				.five.wide.tablet.three.wide.computer.column
+					p.course Computer Networking
+				.five.wide.tablet.three.wide.computer.column
+					p.course Interactive Media
+				.five.wide.tablet.three.wide.computer.column
+					p.course Database Management
+.ui.menu.container#search-bar
+	.ui.categoy.search.item
+		.ui.transparent.icon.input
+			input.prompt type="text" placeholder="Place or City"
+	.ui.categoy.search.item
+		.ui.transparent.icon.input
+			input.prompt type="text" placeholder="Programming Field"
+			button.ui.button.search-btn Search
+	
+.ui.container#show-company-all
+	/ - if flash[:success]
+	/ 	p = flash[:success]
+	h3.ui.header Top Company in Malaysia
+	.ui.centered.grid
+		- @companies.each do |company|
+			= render partial: "company_listing", locals: {company: company}
+button.ui.button
+	= link_to "Add new Company", new_company_path
