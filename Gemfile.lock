@@ -75,6 +75,7 @@ GEM
     country_select (3.0.0)
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
+    docile (1.1.5)
     erubi (1.6.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -90,6 +91,7 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    json (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -170,6 +172,11 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
+    simplecov (0.14.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.1)
     sixarm_ruby_unaccent (1.1.1)
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
@@ -236,6 +243,7 @@ DEPENDENCIES
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)
   simple_form
+  simplecov
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
