@@ -17,7 +17,16 @@
 require 'test_helper'
 
 class TaggingTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # constant tests go here
+
+  # associations tests go here
+
+  # validations tests go here
+
+  # scope tests go here
+
+  # class method tests go here
+
+  # instance method tests go here
+  
 end

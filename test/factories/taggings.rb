@@ -16,7 +16,7 @@
 
 FactoryGirl.define do
   factory :tagging do
-    company nil
-    tag nil
+    company
+    tag
   end
 end

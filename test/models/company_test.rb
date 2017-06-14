@@ -15,37 +15,24 @@
 require 'test_helper'
 
 class CompanyTest < ActiveSupport::TestCase
-  setup do
-    @status = [:pending, :rejected, :approved]
-  end
+  # constant tests go here
 
-  test "should be invalid without name" do
-    company = build(:company, name: nil)
-    assert_nil company.name
-    assert_not company.valid?
-  end
+  # associations tests go here
+  should have_one(:address)
+  should have_many(:taggings)
+  should have_many(:tags).through(:taggings)
 
-  test "should be invalid without description" do
-    company = build(:company, description: nil)
-    assert_nil company.description
-    assert_not company.valid?
-  end
+  # validations tests go here
+  should validate_presence_of(:name)
+  should validate_presence_of(:description)
+  should validate_presence_of(:size)
+  should validate_presence_of(:website)
+  should define_enum_for(:status).with([:pending, :rejected, :approved])
 
-  test "should be invalid without size" do
-    company = build(:company, size: nil)
-    assert_nil company.size
-    assert_not company.valid?
-  end
+  # scope tests go here
 
-  test "should be invalid without website" do
-    company = build(:company, website: nil)
-    assert_nil company.website
-    assert_not company.valid?
-  end
+  # class method tests go here
 
-  test "status should be in right index" do
-    @status.each_with_index do |item, index|
-      assert_equal Company.statuses[item], index
-    end
-  end
+  # instance method tests go here
+
 end

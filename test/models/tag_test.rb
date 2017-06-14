@@ -11,9 +11,19 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
-  test "should be invalid without name" do
-    tag = build(:tag, name: nil)
-    assert_nil tag.name
-    assert_not tag.valid?
-  end
+  # constant tests go here
+
+  # associations tests go here
+  should have_many(:taggings)
+  should have_many(:companies).through(:taggings)
+
+  # validations tests go here
+  should validate_presence_of(:name)
+
+  # scope tests go here
+
+  # class method tests go here
+
+  # instance method tests go here
+  
 end
