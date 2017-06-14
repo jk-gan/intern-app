@@ -15,11 +15,7 @@
 require 'test_helper'
 
 class CompanyTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
-  def setup
+  setup do
     @status = [:pending, :rejected, :approved]
   end
 
