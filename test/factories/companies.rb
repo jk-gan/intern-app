@@ -2,14 +2,18 @@
 #
 # Table name: companies
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  description :text
-#  size        :integer
-#  website     :text
-#  status      :integer          default("pending")
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                :integer          not null, primary key
+#  name              :string
+#  description       :text
+#  size              :integer
+#  website           :text
+#  status            :integer          default("pending")
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  logo_file_name    :string
+#  logo_content_type :string
+#  logo_file_size    :integer
+#  logo_updated_at   :datetime
 #
 
 FactoryGirl.define do
