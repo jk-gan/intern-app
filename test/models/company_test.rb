@@ -26,25 +26,25 @@ class CompanyTest < ActiveSupport::TestCase
   test "should be invalid without name" do
     company = build(:company, name: nil)
     assert_nil company.name
-    assert_equal false, company.valid?
+    assert_not company.valid?
   end
 
   test "should be invalid without description" do
     company = build(:company, description: nil)
     assert_nil company.description
-    assert_equal false, company.valid?
+    assert_not company.valid?
   end
 
   test "should be invalid without size" do
     company = build(:company, size: nil)
     assert_nil company.size
-    assert_equal false, company.valid?
+    assert_not company.valid?
   end
 
   test "should be invalid without website" do
     company = build(:company, website: nil)
     assert_nil company.website
-    assert_equal false, company.valid?
+    assert_not company.valid?
   end
 
   test "status should be in right index" do
