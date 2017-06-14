@@ -14,6 +14,8 @@
 
 class Company < ApplicationRecord
   has_one :address
+  has_many :taggings
+	has_many :tags, through: :taggings
 
   validates :name, :description, :size, :website, presence: true
 
