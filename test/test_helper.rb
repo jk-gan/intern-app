@@ -7,12 +7,5 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   include FactoryGirl::Syntax::Methods
-
-  # Shoulda::Matchers.configure do |config|
-  #   config.integrate do |with|
-  #     with.test_framework :minitest
-  #     with.library :rails
-  #   end
-  # end
-
+  
 end
