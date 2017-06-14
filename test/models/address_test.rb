@@ -23,14 +23,14 @@ class AddressTest < ActiveSupport::TestCase
   # constant tests go here
 
   # associations tests go here
-  should belong_to(:company)
+  should belong_to :company
 
   # validations tests go here
-  should validate_presence_of(:street_address)
-  should validate_presence_of(:city)
-  should validate_presence_of(:state)
-  should validate_presence_of(:country)
-  should validate_presence_of(:postcode)
+  should validate_presence_of :street_address
+  should validate_presence_of :city
+  should validate_presence_of :state
+  should validate_presence_of :country
+  should validate_presence_of :postcode
   should validate_length_of(:postcode).is_equal_to(5).on(:create)
 
   # scope tests go here

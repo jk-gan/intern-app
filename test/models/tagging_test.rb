@@ -20,6 +20,8 @@ class TaggingTest < ActiveSupport::TestCase
   # constant tests go here
 
   # associations tests go here
+  should belong_to :company
+  should belong_to :tag
 
   # validations tests go here
 
@@ -28,5 +30,5 @@ class TaggingTest < ActiveSupport::TestCase
   # class method tests go here
 
   # instance method tests go here
-  
+
 end
