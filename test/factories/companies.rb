@@ -24,5 +24,10 @@ FactoryGirl.define do
     website "www.company1.com"
     status 0
     all_tags "tech, big, studio"
+
+    after :create do |company|
+      create :address, company: company
+    end
+
   end
 end
