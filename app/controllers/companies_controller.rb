@@ -19,14 +19,34 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      flash[:success] = "Company successfully edited"
+      redirect_to company_url(@company.id)
+    else
+      flash[:error] = "Failed to edit company"
+      render :edit
+    end
+  end
+
+  def show
+    @company = Company.find(params[:id])
+  end
+
   private
 
   def company_params
   	params.require(:company).permit(
-  		:name,
-  		:description,
-  		:size,
-  		:website,
+      :logo,
+      :name,
+      :description,
+      :size,
+      :website,
       :all_tags
   	)
   end

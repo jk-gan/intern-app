@@ -5,20 +5,20 @@
         = image_tag company.logo.url(:thumb)
       .content
         p.header = company.name
-        p.meta
-          = company.address.city
-          | ,&nbsp;
-          = company.address.state
-        #average-rating.rating-catergory
-          #average_star.ui.star.rating
-          p.description  
-            = company.ratings.count 
-            | &nbsp;reviews
-        javascript:
-          $('#average_star')
-            .rating({
-              initialRating: #{company.average_rating.to_i},
-              maxRating: 5,
-              interactive: false
-            })
-          ;
+        / p.meta
+        /   = company.address.city
+        /   | ,&nbsp;
+        /   = company.address.state
+        / #average-rating.rating-catergory
+        /   #average_star.ui.star.rating
+        /   p.description  
+        /     = company.ratings.count 
+        /     | &nbsp;reviews
+        / javascript:
+        /   $('#average_star')
+        /     .rating({
+        /       initialRating: #{company.average_rating.to_i},
+        /       maxRating: 5,
+        /       interactive: false
+        /     })
+        /   ;
