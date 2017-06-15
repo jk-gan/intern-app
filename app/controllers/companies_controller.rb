@@ -26,7 +26,8 @@ class CompaniesController < ApplicationController
   		:name,
   		:description,
   		:size,
-  		:website
+  		:website,
+      :all_tags
   	)
   end
 end

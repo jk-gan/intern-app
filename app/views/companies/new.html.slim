@@ -15,8 +15,8 @@
 				= form.input :size, label: false, placeholder: 'Company Size'
 			.field
 				= form.input :website, label: false, placeholder: 'Company Website'
-			/ .field
-			/ 	= form.input :all_tags, placeholder: "Tags seperated with comma", label: false
+			.field
+				= form.input :all_tags, placeholder: "Tags seperated with comma", label: false
 			= form.simple_fields_for :address do |address_form|
 				h4.ui.header Company Location
 				.field

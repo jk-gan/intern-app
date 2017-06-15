@@ -23,5 +23,6 @@ FactoryGirl.define do
     size 1000
     website "www.company1.com"
     status 0
+    all_tags "tech, big, studio"
   end
 end
