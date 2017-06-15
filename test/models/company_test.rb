@@ -30,6 +30,8 @@ class CompanyTest < ActiveSupport::TestCase
   should have_one :address
   should have_many :taggings
   should have_many(:tags).through(:taggings)
+  should have_one(:contact).dependent(:destroy)
+  should accept_nested_attributes_for(:address)
 
   # validations tests go here
   should validate_presence_of :name

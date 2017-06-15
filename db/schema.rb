@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614091415) do
+ActiveRecord::Schema.define(version: 20170615081930) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20170614091415) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "company_id"
+    t.string "name"
+    t.string "role"
+    t.string "contact_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
   create_table "taggings", force: :cascade do |t|
