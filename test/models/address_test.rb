@@ -31,7 +31,7 @@ class AddressTest < ActiveSupport::TestCase
   should validate_presence_of :state
   should validate_presence_of :country
   should validate_presence_of :postcode
-  should validate_length_of(:postcode).is_equal_to(5).on(:create)
+  should validate_length_of(:postcode).is_equal_to(5)
 
   # scope tests go here
 

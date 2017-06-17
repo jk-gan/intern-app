@@ -39,8 +39,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-matchers', '~> 2.0'
+  gem 'shoulda-context'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'simplecov', :require => false
 end
 

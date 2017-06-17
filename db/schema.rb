@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615114908) do
+ActiveRecord::Schema.define(version: 20170617121033) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20170615114908) do
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.index ["company_id"], name: "index_contacts_on_company_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer "company_id"
+    t.string "name"
+    t.text "description"
+    t.float "working_hours"
+    t.string "dress_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "taggings", force: :cascade do |t|
