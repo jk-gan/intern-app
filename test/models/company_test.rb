@@ -20,8 +20,8 @@ require 'test_helper'
 
 class CompanyTest < ActiveSupport::TestCase
   setup do
-    @company1 = create(:company, name: "Apple", all_tags: "tech, apple")
-    @company2 = create(:company, name: "Google", all_tags: "tech, google")
+    @company1 = companies(:apple)
+    @company2 = companies(:google)
   end
 
   # constant tests go here
@@ -59,7 +59,8 @@ class CompanyTest < ActiveSupport::TestCase
 
   # instance method tests go here
   test "all_tags= should create tags" do
-    company = create(:company, all_tags: 'a, b, c')
+    company = companies(:apple)
+    company.all_tags = 'a, b, c'
     assert_equal Tag.find_by(name: 'a').taggings.first.company_id, company.id
   end
 
