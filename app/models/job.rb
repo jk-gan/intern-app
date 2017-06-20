@@ -18,6 +18,8 @@
 
 class Job < ApplicationRecord
   belongs_to :company
+  has_one :welfare, dependent: :destroy
+  accepts_nested_attributes_for :welfare, reject_if: :all_blank, allow_destroy: true
 
   validates :name, presence: true
   validates :description, presence: true

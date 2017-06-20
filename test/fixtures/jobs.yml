@@ -22,8 +22,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
+rails:
+  company: apple
+  name: rails developer
+  description: rails developer description
+  working_hours: 8
+  dress_code: smart casual
+
 two: {}
 # column: value

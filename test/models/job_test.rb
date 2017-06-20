@@ -23,6 +23,8 @@ class JobTest < ActiveSupport::TestCase
 
   # associations tests go here
   should belong_to :company
+  should have_one(:welfare).dependent(:destroy)
+  should accept_nested_attributes_for(:welfare).allow_destroy(true)
 
   # validations tests go here
   should validate_presence_of :name
