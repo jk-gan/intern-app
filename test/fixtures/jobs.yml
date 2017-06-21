@@ -29,5 +29,10 @@ rails:
   working_hours: 8
   dress_code: smart casual
 
-two: {}
+php:
+  company: apple
+  name: php developer
+  description: php developer description
+  working_hours: 8
+  dress_code: smart casual
 # column: value

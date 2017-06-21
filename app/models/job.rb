@@ -18,6 +18,8 @@
 
 class Job < ApplicationRecord
   belongs_to :company
+  has_many :scopings
+  has_many :scopes, through: :scopings
   has_one :welfare, dependent: :destroy
   accepts_nested_attributes_for :welfare, reject_if: :all_blank, allow_destroy: true
 
@@ -25,4 +27,18 @@ class Job < ApplicationRecord
   validates :description, presence: true
   validates :working_hours, presence: true, numericality: { greater_than: 0 }
   validates :dress_code, presence: true
+
+  def all_scopes=(names)
+    self.scopes = names.split(",").map do |name|
+        Scope.where(name: name.strip).first_or_create!
+    end
+  end
+
+  def all_scopes
+    self.scopes.map(&:name).join(", ")
+  end
+
+  def self.scoped_with(name)
+    Scope.find_by_name!(name).jobs
+  end
 end
