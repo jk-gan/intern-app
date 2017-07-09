@@ -1,0 +1,6 @@
+h1 Add new job
+
+- if flash[:notice]
+  p = flash[:notice]
+  
+= render 'form', params: [@company, @job], submit: 'Add new job'
