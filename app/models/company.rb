@@ -21,6 +21,7 @@ class Company < ApplicationRecord
   has_many :taggings
 	has_many :tags, through: :taggings
   has_one :contact, dependent: :destroy
+  has_many :jobs, dependent: :destroy
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "150x150>" }, default_url: "missing/missing.png"
 	validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/

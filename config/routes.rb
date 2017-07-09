@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :companies, shallow: true do
     resources :contacts, only: [:new, :create, :edit, :update]
+    resources :jobs
   end
 
   get 'tags/:tag', to: 'companies#index', as: :tag
