@@ -8,10 +8,10 @@
       p = @job.working_hours
       p = @job.dress_code
       p = @job.all_scopes
-      / p = @job.welfare.allowance
-      / p = @job.welfare.training ? @job.welfare.training_detail : 'No training is provided'
-      / p = @job.welfare.free_food ? @job.welfare.free_food_detail : 'No free food is provided'
-      / p = @job.welfare.accomodation ? 'Accomodation is provided' : 'No accomodation is provided'
+      p = @job.welfare.allowance
+      p = @job.welfare.has_training? ? @job.welfare.training_detail : 'No training is provided'
+      p = @job.welfare.has_free_food? ? @job.welfare.free_food_detail : 'No free food is provided'
+      p = @job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'
 
       br
       button.ui.button

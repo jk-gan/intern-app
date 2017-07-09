@@ -30,7 +30,7 @@ class Job < ApplicationRecord
 
   def all_scopes=(names)
     self.scopes = names.split(",").map do |name|
-        Scope.where(name: name.strip).first_or_create!
+      Scope.where(name: name.strip).first_or_create!
     end
   end
 

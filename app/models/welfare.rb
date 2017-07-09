@@ -23,6 +23,7 @@ class Welfare < ApplicationRecord
   belongs_to :job
 
   validates :training_detail, presence: true, if: :has_training?
+  validates :free_food_detail, presence: true, if: :has_free_food?
 
   def has_training?
     training
@@ -30,5 +31,9 @@ class Welfare < ApplicationRecord
 
   def has_free_food?
     free_food
+  end
+
+  def has_accomodation?
+    accomodation
   end
 end

@@ -10,6 +10,7 @@ class JobsController < ApplicationController
 
   def new
     @job = @company.jobs.new
+    @job.build_welfare
   end
 
   def create
@@ -55,9 +56,19 @@ class JobsController < ApplicationController
   	params.require(:job).permit(
       :name,
   		:description,
-  		:working_hour,
+  		:working_hours,
   		:dress_code,
-  		:all_scopes
+  		:all_scopes,
+      welfare_attributes: [
+        :id,
+        :training,
+        :training_detail,
+        :accomodation,
+        :free_food,
+        :free_food_detail,
+        :other_benefits,
+        :allowance
+      ],
   	)
   end
 end

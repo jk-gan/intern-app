@@ -37,6 +37,8 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @first_job = @company.jobs.first
+    @company_job = @company.jobs.drop(1)
   end
 
   private
