@@ -1,0 +1,562 @@
+// Place all the styles related to the company controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$intern_teal: #00A699;
+$intern_line: rgba(#D5DDE0, 0.5);
+.box{
+  border: 1px solid black;
+}
+body{
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.card-shadow{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+p.meta{
+  color: #767676 !important;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.background{
+  background: linear-gradient(160deg, #02CCBA 0%, #AA7ECD 100%);
+}
+
+#navigation-menu{
+  padding: 20px 0px;
+
+  .menu{
+    a.item{
+      border-radius: 0px;
+      color: #fff;
+    }
+    a.item:hover{
+      background: none;
+      border-bottom: 2px solid #fff;
+    }
+  }
+}
+
+.jumbotron{
+    .column{
+      .video{
+        border-radius: 5px;
+        box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.37)
+      }
+
+      .ui.segment{
+        box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.37);
+        border: none;
+        transition: all 0.45s;
+          a{
+            color: #484848 !important;
+
+            .header{
+              margin-bottom: 5px;
+            }
+            p{
+              margin-top: 0px;
+              margin-bottom: 0px;
+              height: 20px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .read-more{
+              color: #FF7E82;
+              text-align: right;
+              margin-top: 10px;
+            }
+
+          }
+
+      }
+
+      .ui.segment:hover{
+        box-shadow: 5px 2px 10px 0px rgba(46,61,73,0.37)
+      }
+    }
+  }
+
+  #main-header{
+    padding: 30px 0px;
+
+    h1{
+      margin: 20px 0px 40px 0px;
+      font-size: 48px;
+      color: #ffffff;
+
+
+      .header{
+        font-size: 22px;
+        color: #ffffff;
+      }
+    }
+    .ui{
+      .column{
+        text-align: center;
+        padding: 10px;
+          p {
+            font-size: 16px;
+            color: #616177;
+            font-weight: 700px;
+            &:hover{
+              cursor: pointer;
+              color: #ffffff;
+            }
+          }
+      }
+    }
+  }
+
+  #search-bar{
+    margin-top: 50px;
+    height: 80px;
+    .search{
+      width: 50%;
+      .search-btn{
+        height: 50px;
+        color: #ffffff;
+        background-color: #FF7E82;
+      }
+    }
+  }
+
+#show-company-all h3{
+  margin-top: 50px;
+  font-weight: 500;
+  color: #4a4a4a;
+}
+
+.box {
+  border: 1px solid black;
+}
+
+.company_box{
+  .ui.card{
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover{
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      transform: translateY(-3px);
+    }
+    .image{
+      height: 200px;
+      img{
+        object-fit: cover;
+        height: 100%;
+      }
+
+    }
+    .content{
+      p{
+        margin: 0px !important;
+      }
+      p.header{
+        font-size: 19px;
+        font-weight: bold;
+        line-height: normal;
+        color: #4a4a4a;
+      }
+      p.meta{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: normal;
+        color: #9b9b9b;
+        margin: 3px 0;
+      }
+      p.description{
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 18px;
+        color: #4a4a4a;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 5px;
+      }
+      .rating-catergory{
+        .star.rating{
+          margin-right: 5px;
+          .icon{
+            width: 1.05em;
+            &.active, &.selected{
+              color: #00A699 !important;
+              text-shadow: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.create_company{
+  width: 100%;
+  min-height: 100%;
+
+  .create_company_form{
+    background-color: white;
+
+    .company-form{
+      padding: 20px 40px;
+      .field{
+        input{
+          height: 50px;
+          border-radius: 2px;
+          border: solid 1px rgba(72, 72, 72, 0.3);
+
+          &::placeholder{
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(72, 72, 72, 0.5);
+          }
+          &:focus{
+            border-color: #008489
+          }
+        }
+      }
+
+      .teal-btn{
+        height: 50px;
+        border: 1px solid #008489;
+        border-radius: 2px;
+        color: #008489;
+        text-align: center;
+        line-height: 50px;
+        i {
+          margin-right: 10px;
+        }
+        &:hover{
+          background-color: #008489;
+          color: white;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+
+      .input.file.company_logo{
+        display: none !important;
+      }
+      .input textarea {
+        height: 20px;
+        border-radius: 2px;
+        border: solid 1px rgba(72, 72, 72, 0.3);
+        &:focus{
+            border-color: #008489
+        }
+      }
+      .select-field {
+        position: relative;
+        .input select {
+        height: 50px;
+        border-radius: 2px !important;
+        border: solid 1px rgba(72, 72, 72, 0.3);
+        -webkit-appearance: none;
+
+          &:focus{
+            box-shadow: none;
+            outline: none;
+            border-color: #008489;
+            i {
+              color: #008489;
+            }
+          }
+        }
+        i{
+            position: absolute;
+            top: calc(50% - 12px);
+            right: 10px;
+            color: rgba(72, 72, 72, 0.3)
+        }
+      }
+    }
+  }
+
+  .create_company_info{
+    background-color: #008489;
+    background-image: url('/assets/bg/bg-map.png');
+
+    .card{
+      background-color: white;
+      width: 500px;
+      padding: 20px;
+      box-shadow: 12px 15px 20px 0 rgba(46, 60, 73, 0.37);
+      margin: 20px 50px;
+      border-radius: 2px;
+    }
+
+    .upload-preview {
+      width: 80%;
+      img{
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// show page
+
+.hero-div{
+  height: 150px;
+  width: 100%;
+  background-color: $intern_teal;
+}
+
+.hero-main-header{
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  margin: 0px auto;
+  margin-top: -70px;
+  img{
+    height: 150px;
+    width: 150px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+  }
+  h1{
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.22;
+    color: #484848;
+  }
+  p{
+    font-size: 16px;
+	  text-align: justify;
+    color: #484848;
+    line-height: 22px;
+  }
+}
+
+#company-section{
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 50px 100px;
+
+  .basic-info{
+    border-top: 1px solid $intern_line;
+    border-bottom: 1px solid $intern_line;
+
+    p, a{
+      color: #767676;
+      .icon{
+        margin-right: 15px;
+        font-size: 18px;
+      }
+    }
+    a:hover{
+      color: $intern_teal;
+    }
+    .ui.grid{
+      margin: 0px;
+      .column{
+        padding: 15px;
+      }
+    }
+  }
+  .intern-job {
+    .intern-desc-title{
+      p{
+        font-size: 16px;
+      }
+    }
+    .intern-welfare {
+      border-bottom: 1px solid $intern_line;
+      padding-left: 0;
+      p {
+        font-weight: bold;
+        margin-bottom: 15px;
+        span {
+          font-weight: lighter;
+        }
+      }
+      &.no-border{
+        border: 0;
+      }
+    }
+    .jobs-column{
+      padding-left: 0;
+    }
+    a.jobs_link{
+      width: 100%;
+      text-align: center;
+      &:hover{
+        cursor: pointer;
+      }
+      .more-jobs{
+        width: 100%;
+        padding: 10px;
+        p{
+          margin: 0;
+          color: $intern_teal;
+        }
+      }
+    }
+  }
+
+  .action-area{
+    border: 1px dashed #4a4a4a;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    a{
+      .big-btn{
+        height: 50px;
+        width: 100%;
+        background-color: #aaaaaa;
+        border-radius: 5px;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 10px;
+        p{
+          line-height: 50px;
+          font-size: 16px;
+        }
+      }
+      &:first-child{
+        .big-btn{
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+
+  .contact-box {
+    border: 1px solid $intern_line;
+    padding: 10px 15px;
+    .contact-person{
+      min-height: 100px;
+      img{
+        width: 100px;
+        border-radius: 100%;
+      }
+
+      .contact-detail{
+        padding-left: 0;
+        p {
+          margin: 0;
+          font-size: 14px;
+          line-height: normal;
+          &.contact-name{
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+
+        a{
+          margin-top: 10px;
+          color: $intern_teal;
+          display: inline-block;
+        }
+      }
+
+      .add-contact-btn{
+        height: 50px;
+        width: 100%;
+        background-color: #ff5a5f;
+        color: white;
+        border-radius: 3px;
+        text-align: center;
+        p{
+          line-height: 50px;
+        }
+      }
+    }
+    .application{
+      text-align: center;
+      border-top: 1px solid $intern_line;
+      margin-top: 10px;
+      padding-top: 10px;
+
+      a.apply-btn{
+        width: 100%;
+        height: 50px;
+        background-color: #FF5A5F;
+        display: inline-block;
+        line-height: 50px;
+        color: white;
+        border-radius: 4px;
+      }
+
+      p{
+        color: #484848;
+      }
+
+    }
+  }
+  .intern-job-rating{
+    margin-top: 30px;
+    #average-rating{
+      padding-bottom: 10px;
+      border-bottom: 1px solid #DCE0E0;
+      p{
+        font-size: 28px;
+      }
+      .star.rating{
+        margin-left: 20px;
+        .icon{
+          width: 22px;
+          &:before{
+            width: 100%;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    p{
+      display: inline-block;
+      margin: 0px;
+    }
+    .star.rating{
+      &.move-left{
+        float: right;
+      }
+      .icon{
+        &.active, &.selected{
+          color: #00A699 !important;
+          border-color: #00A699 !important;
+          text-shadow: none !important;
+        }
+      }
+    }
+  }
+  .fave-me{
+    border: 1px solid $intern_line;
+    margin-top: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    a.save-btn{
+      display: inline-block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      border: 1px solid #aaaaaa;
+      font-weight: bold;
+      color: #4a4a4a;
+    }
+  }
+  .social-link{
+    border: 1px solid $intern_line;
+    border-top: none;
+    text-align: center;
+    .social-btn{
+      height: 40px;
+      border-right: 1px solid $intern_line;
+      padding: 0;
+      &:last-child{
+        border: 0;
+      }
+
+      p{
+        line-height: 40px;
+      }
+    }
+  }
+
+}

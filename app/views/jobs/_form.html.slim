@@ -1,0 +1,15 @@
+= simple_form_for params do |form|
+  = form.input :name
+  = form.input :description
+  = form.input :working_hours
+  = form.input :dress_code
+  = form.input :all_scopes, placeholder: "Scopes seperated with comma", label: false
+  = form.simple_fields_for :welfare do |welfare_form|
+    = welfare_form.input :allowance
+    = welfare_form.input :training, as: :boolean
+    = welfare_form.input :training_detail
+    = welfare_form.input :accomodation, as: :boolean
+    = welfare_form.input :free_food, as: :boolean
+    = welfare_form.input :free_food_detail
+    = welfare_form.input :other_benefits
+  = form.button :submit, submit

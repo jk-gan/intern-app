@@ -1,0 +1,14 @@
+= simple_form_for @company do |form|
+	= form.input :logo, class: "file"
+	= form.input :name
+	= form.input :description
+	= form.input :size
+	= form.input :website
+	= form.input :all_tags, placeholder: "Tags seperated with comma"
+	= form.simple_fields_for :address do |address_form|
+		= address_form.input :street_address
+		= address_form.input :city
+		= address_form.input :state
+		= address_form.input :country, priority: ["Malaysia", "Singapore", "Thailand"]
+		= address_form.input :postcode
+	= form.button :submit, "Update company"

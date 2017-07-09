@@ -1,0 +1,42 @@
+# == Schema Information
+#
+# Table name: welfares
+#
+#  id               :integer          not null, primary key
+#  job_id           :integer
+#  training         :boolean
+#  training_detail  :text
+#  accomodation     :boolean
+#  free_food        :boolean
+#  free_food_detail :text
+#  other_benefits   :text
+#  allowance        :decimal(8, 2)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+# Indexes
+#
+#  index_welfares_on_job_id  (job_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: rails
+  training: true
+  training_detail: Rails training
+  accomodation: true
+  free_food: true
+  free_food_detail: free snacks
+  other_benefits: no
+  allowance: 700
+
+two:
+  job: two
+  training: false
+  training_detail: MyText
+  accomodation: false
+  free_food: false
+  free_food_detail: MyText
+  other_benefits: MyText
+  allowance:
