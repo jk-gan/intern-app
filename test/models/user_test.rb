@@ -13,7 +13,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
-#  role                   :integer          default(0)
+#  role                   :integer          default("user")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
