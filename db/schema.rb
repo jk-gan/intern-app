@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711081218) do
+ActiveRecord::Schema.define(version: 20170711081425) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id"
@@ -78,6 +78,10 @@ ActiveRecord::Schema.define(version: 20170711081218) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "resume_file_name"
+    t.string "resume_content_type"
+    t.integer "resume_file_size"
+    t.datetime "resume_updated_at"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
