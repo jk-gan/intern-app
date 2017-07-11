@@ -1,17 +1,28 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_company, only: [:show, :edit, :update]
+
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
 
   def index
-    @companies = Company.all
+    if params[:tag]
+      @companies = policy_scope(Company).tagged_with(params[:tag])
+    else
+      @companies = policy_scope(Company).limit(9)
+    end
+    # @companies = Company.all
   end
 
   def new
     @company = Company.new
+    authorize @company
     @company.build_address
   end
 
   def create
     @company = Company.new(company_params)
+    authorize @company
     if @company.save
       flash[:success] = "Company successfully created"
       redirect_to @company
@@ -23,11 +34,9 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     if @company.update(company_params)
       flash[:success] = "Company successfully edited"
       redirect_to company_url(@company.id)
@@ -38,12 +47,16 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:id])
     @first_job = @company.jobs.first
     @company_job = @company.jobs.drop(1)
   end
 
   private
+
+  def set_company
+    @company = Company.find(params[:id])
+    authorize @company
+  end
 
   def company_params
     params.require(:company).permit(
