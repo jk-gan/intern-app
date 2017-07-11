@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
   before_action :set_company, only: [:new, :create]
   before_action :set_job, only: [:show, :edit, :update]
 
@@ -11,11 +11,13 @@ class JobsController < ApplicationController
 
   def new
     @job = @company.jobs.new
+    authorize @job
     @job.build_welfare
   end
 
   def create
     @job = @company.jobs.new(job_params)
+    authorize @job
     if @job.save
       flash[:success] = "Job is successfully created"
       redirect_to @job
@@ -51,6 +53,7 @@ class JobsController < ApplicationController
 
   def set_job
     @job = Job.find(params[:id])
+    authorize @job
   end
 
   def job_params
