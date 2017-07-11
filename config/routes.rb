@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :jobs
   end
 
+  resources :ratings, only: :update
+
   get 'tags/:tag', to: 'companies#index', as: :tag
 end
