@@ -47,6 +47,15 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @ratings = @company.ratings
+    if current_user
+      @rating = @company.ratings.where(user_id: current_user.id).first
+      unless @rating
+        @rating = Rating.create(company_id: @company.id, user_id: current_user.id)
+      end
+    else
+      @rating = Rating.new
+    end
     @first_job = @company.jobs.first
     @company_job = @company.jobs.drop(1)
   end
@@ -54,7 +63,11 @@ class CompaniesController < ApplicationController
   private
 
   def set_company
-    @company = Company.find(params[:id])
+    if params[:action] == 'show'
+      @company = Company.includes(jobs: [:welfare, :scopes]).find(params[:id])
+    else
+      @company = Company.find(params[:id])
+    end
     authorize @company
   end
 
