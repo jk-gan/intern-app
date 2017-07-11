@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @companies = Company.all
   end
