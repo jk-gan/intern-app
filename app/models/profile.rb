@@ -2,16 +2,20 @@
 #
 # Table name: profiles
 #
-#  id         :integer          not null, primary key
-#  first_name :string
-#  last_name  :string
-#  university :string
-#  course     :string
-#  phone      :string
-#  user_id    :integer
-#  gender     :integer          default("Male")
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                  :integer          not null, primary key
+#  first_name          :string
+#  last_name           :string
+#  university          :string
+#  course              :string
+#  phone               :string
+#  user_id             :integer
+#  gender              :integer          default("Male")
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 # Indexes
 #
@@ -20,6 +24,9 @@
 
 class Profile < ApplicationRecord
   belongs_to :user
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing/missing.png"
+  validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\z/ }
 
   enum gender: [ :Male, :Female ]
 end
