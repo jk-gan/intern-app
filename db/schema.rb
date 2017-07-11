@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710124732) do
+ActiveRecord::Schema.define(version: 20170711055932) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id"
@@ -75,6 +75,27 @@ ActiveRecord::Schema.define(version: 20170710124732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "company_id"
+    t.float "culture_score", default: 0.0
+    t.float "environment_score", default: 0.0
+    t.float "cleanliness_score", default: 0.0
+    t.float "location_score", default: 0.0
+    t.float "learning_score", default: 0.0
+    t.float "management_score", default: 0.0
+    t.boolean "new_culture_score", default: true
+    t.boolean "new_environment_score", default: true
+    t.boolean "new_cleanliness_score", default: true
+    t.boolean "new_location_score", default: true
+    t.boolean "new_learning_score", default: true
+    t.boolean "new_management_score", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_ratings_on_company_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "scopes", force: :cascade do |t|
