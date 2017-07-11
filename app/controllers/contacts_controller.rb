@@ -1,15 +1,16 @@
 class ContactsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
   before_action :set_company, only: [:new, :create]
   before_action :set_contact, only: [:edit, :update]
 
   def new
     @contact_person = @company.build_contact
+    authorize @contact_person
   end
 
   def create
     @contact_person = @company.build_contact(contact_params)
-    # authorize @contact_person
+    authorize @contact_person
     if @contact_person.save
       flash[:success] = "Contact Person successfully created"
       redirect_to @company
@@ -42,7 +43,7 @@ class ContactsController < ApplicationController
 
   def set_contact
     @contact_person = Contact.find(params[:id])
-    # authorize @contact_person
+    authorize @contact_person
   end
 
   def contact_params
