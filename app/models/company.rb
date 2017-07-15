@@ -22,6 +22,7 @@ class Company < ApplicationRecord
 	has_many :tags, through: :taggings
   has_one :contact, dependent: :destroy
   has_many :jobs, dependent: :destroy
+  has_many :ratings
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "150x150>" }, default_url: "missing/missing.png"
 	validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
@@ -48,5 +49,36 @@ class Company < ApplicationRecord
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).companies
+  end
+
+  def average_rating
+    # sum = ratings.sum { |rate| rate.culture_score + rate.environment_score + rate.cleanliness_score + rate.location_score + rate.learning_score + rate.management_score }
+    # sum / (ratings.size * 6)
+    sum = average_culture_rating + average_environment_rating + average_cleanliness_rating + average_location_rating + average_learning_rating + average_management_rating
+    sum / 6
+  end
+
+  def average_culture_rating
+    ratings.where(new_culture_score: false).average(:culture_score) || 0
+  end
+
+  def average_environment_rating
+    ratings.where(new_environment_score: false).average(:environment_score) || 0
+  end
+
+  def average_cleanliness_rating
+    ratings.where(new_cleanliness_score: false).average(:cleanliness_score) || 0
+  end
+
+  def average_location_rating
+    ratings.where(new_location_score: false).average(:location_score) || 0
+  end
+
+  def average_learning_rating
+    ratings.where(new_learning_score: false).average(:learning_score) || 0
+  end
+
+  def average_management_rating
+    ratings.where(new_management_score: false).average(:management_score) || 0
   end
 end

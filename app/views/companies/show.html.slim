@@ -31,37 +31,43 @@ section#company-section
           .four.wide.computer.eight.wide.tablet.column.intern-desc-title
             p Intern Job & Info
           .twelve.wide.computer.eight.wide.tablet.column.intern-welfare
-            p 
-              span Name :&nbsp;
-              = @first_job.name
-            p
-              span Allowance :&nbsp;
-              | RM
-              = @first_job.welfare.allowance
-            p
-              span Working Hour :&nbsp;
-              = @first_job.working_hours
-            p 
-              span Dress Code :&nbsp;
-              = @first_job.dress_code
-            p 
-              span Job Scope :&nbsp;
-              = @first_job.all_scopes
-            p 
-              span Training Provided :&nbsp;
-              = @first_job.welfare.has_training? ? @first_job.welfare.training_detail : 'No training is provided'
-            p 
-              span Free Food :&nbsp;
-              = @first_job.welfare.has_free_food? ? @first_job.welfare.free_food_detail : 'No free food is provided'
-            p 
-              span Accomodation Provided :&nbsp;
-              = @first_job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'
-        .ui.centered.grid.no.margin
-          .four.wide.computer.eight.wide.tablet.column.intern-desc-title
-            p Description
-          .twelve.wide.computer.eight.wide.tablet.column.intern-welfare
-            p 
-              span = @first_job.description
+            - if @first_job.nil?
+              p No job available
+            - else
+              p 
+                span Name :&nbsp;
+                = @first_job.name
+              p
+                span Allowance :&nbsp;
+                | RM
+                = @first_job.welfare.allowance
+              p
+                span Working Hour :&nbsp;
+                = @first_job.working_hours
+              p 
+                span Dress Code :&nbsp;
+                = @first_job.dress_code
+              p 
+                span Job Scope :&nbsp;
+                = @first_job.all_scopes
+              p 
+                span Training Provided :&nbsp;
+                = @first_job.welfare.has_training? ? @first_job.welfare.training_detail : 'No training is provided'
+              p 
+                span Free Food :&nbsp;
+                = @first_job.welfare.has_free_food? ? @first_job.welfare.free_food_detail : 'No free food is provided'
+              p 
+                span Accomodation Provided :&nbsp;
+                = @first_job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'
+        
+        - if @first_job
+          .ui.centered.grid.no.margin
+            .four.wide.computer.eight.wide.tablet.column.intern-desc-title
+              p Description
+            .twelve.wide.computer.eight.wide.tablet.column.intern-welfare
+              p 
+                span = @first_job.description
+                
         .ui.centered.grid.no.margin
           .four.wide.computer.eight.wide.tablet.column.intern-desc-title
             p More Jobs
@@ -72,8 +78,31 @@ section#company-section
                   = link_to job, class: "jobs_link" do
                     .more-jobs.card-shadow
                       p = job.name
-
-
+        .intern-job-rating
+          #average-rating.rating-catergory
+            p 
+              = @ratings.count
+              | &nbsp;Reviews
+            div.ui.star.rating#average_star
+          .ui.grid.no.margin
+            .rating-catergory.eight.wide.column
+              p Culture
+              div.ui.star.rating.move-left#culture_star
+            .rating-catergory.eight.wide.column
+              p Environment
+              div.ui.star.rating.move-left#environment_star
+            .rating-catergory.eight.wide.column
+              p Cleanliness
+              div.ui.star.rating.move-left#cleanliness_star
+            .rating-catergory.eight.wide.column
+              p Location
+              div.ui.star.rating.move-left#location_star
+            .rating-catergory.eight.wide.column
+              p Learning
+              div.ui.star.rating.move-left#learning_star
+            .rating-catergory.eight.wide.column
+              p Management
+              div.ui.star.rating.move-left#management_star
 
       .action-area
         = link_to edit_company_path(@company.id) do 
@@ -117,109 +146,109 @@ section#company-section
               p Twitter
             .column.social-btn.insta
               p Instagram
-/  
-/ javascript:
-/   $('#average_star')
-/     .rating({
-/       initialRating: #{@company.average_rating.to_i},
-/       maxRating: 5,
-/       interactive: false
-/     })
-/   ;
-/   
-/   $('#culture_star')
-/     .rating({
-/       initialRating: #{@company.average_culture_rating.to_i},
-/       maxRating: 5,
-/       interactive: #{user_signed_in?},
-/       clearable: #{user_signed_in?},
-/       onRate(value) {
-/         $.ajax({
-/           url: '/ratings/' + "#{@rating.id}",
-/           type: 'PATCH',
-/           data: { score: value, type: 'culture' }
-/         });
-/       }
-/     })
-/   ;
-/   
-/   $('#environment_star')
-/     .rating({
-/       initialRating: #{@company.average_environment_rating.to_i},
-/       maxRating: 5,
-/       interactive: #{user_signed_in?},
-/       clearable: #{user_signed_in?},
-/       onRate(value) {
-/         $.ajax({
-/           url: '/ratings/' + "#{@rating.id}",
-/           type: 'PATCH',
-/           data: { score: value, type: 'environment' }
-/         });
-/       }
-/     })
-/   ;
-/   
-/   $('#cleanliness_star')
-/     .rating({
-/       initialRating: #{@company.average_cleanliness_rating.to_i},
-/       maxRating: 5,
-/       interactive: #{user_signed_in?},
-/       clearable: #{user_signed_in?},
-/       onRate(value) {
-/         $.ajax({
-/           url: '/ratings/' + "#{@rating.id}",
-/           type: 'PATCH',
-/           data: { score: value, type: 'cleanliness' }
-/         });
-/       }
-/     })
-/   ;
-/   
-/   $('#location_star')
-/     .rating({
-/       initialRating: #{@company.average_location_rating.to_i},
-/       maxRating: 5,
-/       interactive: #{user_signed_in?},
-/       clearable: #{user_signed_in?},
-/       onRate(value) {
-/         $.ajax({
-/           url: '/ratings/' + "#{@rating.id}",
-/           type: 'PATCH',
-/           data: { score: value, type: 'location' }
-/         });
-/       }
-/     })
-/   ;
-/   
-/   $('#learning_star')
-/     .rating({
-/       initialRating: #{@company.average_learning_rating.to_i},
-/       maxRating: 5,
-/       interactive: #{user_signed_in?},
-/       clearable: #{user_signed_in?},
-/       onRate(value) {
-/         $.ajax({
-/           url: '/ratings/' + "#{@rating.id}",
-/           type: 'PATCH',
-/           data: { score: value, type: 'learning' }
-/         });
-/       }
-/     })
-/   ;
-/   
-/   $('#management_star')
-/     .rating({
-/       initialRating: #{@company.average_management_rating.to_i},
-/       maxRating: 5,
-/       interactive: #{user_signed_in?},
-/       clearable: #{user_signed_in?},
-/       onRate(value) {
-/         $.ajax({
-/           url: '/ratings/' + "#{@rating.id}",
-/           type: 'PATCH',
-/           data: { score: value, type: 'management' }
-/         });
-/       }
-/     })
-/   ;
-/         
+ 
+javascript:
+  $('#average_star')
+    .rating({
+      initialRating: #{@company.average_rating.to_i},
+      maxRating: 5,
+      interactive: false
+    })
+  ;
+  
+  $('#culture_star')
+    .rating({
+      initialRating: #{@company.average_culture_rating.to_i},
+      maxRating: 5,
+      interactive: #{user_signed_in?},
+      clearable: #{user_signed_in?},
+      onRate(value) {
+        $.ajax({
+          url: '/ratings/' + "#{@rating.id}",
+          type: 'PATCH',
+          data: { score: value, type: 'culture' }
+        });
+      }
+    })
+  ;
+  
+  $('#environment_star')
+    .rating({
+      initialRating: #{@company.average_environment_rating.to_i},
+      maxRating: 5,
+      interactive: #{user_signed_in?},
+      clearable: #{user_signed_in?},
+      onRate(value) {
+        $.ajax({
+          url: '/ratings/' + "#{@rating.id}",
+          type: 'PATCH',
+          data: { score: value, type: 'environment' }
+        });
+      }
+    })
+  ;
+  
+  $('#cleanliness_star')
+    .rating({
+      initialRating: #{@company.average_cleanliness_rating.to_i},
+      maxRating: 5,
+      interactive: #{user_signed_in?},
+      clearable: #{user_signed_in?},
+      onRate(value) {
+        $.ajax({
+          url: '/ratings/' + "#{@rating.id}",
+          type: 'PATCH',
+          data: { score: value, type: 'cleanliness' }
+        });
+      }
+    })
+  ;
+  
+  $('#location_star')
+    .rating({
+      initialRating: #{@company.average_location_rating.to_i},
+      maxRating: 5,
+      interactive: #{user_signed_in?},
+      clearable: #{user_signed_in?},
+      onRate(value) {
+        $.ajax({
+          url: '/ratings/' + "#{@rating.id}",
+          type: 'PATCH',
+          data: { score: value, type: 'location' }
+        });
+      }
+    })
+  ;
+  
+  $('#learning_star')
+    .rating({
+      initialRating: #{@company.average_learning_rating.to_i},
+      maxRating: 5,
+      interactive: #{user_signed_in?},
+      clearable: #{user_signed_in?},
+      onRate(value) {
+        $.ajax({
+          url: '/ratings/' + "#{@rating.id}",
+          type: 'PATCH',
+          data: { score: value, type: 'learning' }
+        });
+      }
+    })
+  ;
+  
+  $('#management_star')
+    .rating({
+      initialRating: #{@company.average_management_rating.to_i},
+      maxRating: 5,
+      interactive: #{user_signed_in?},
+      clearable: #{user_signed_in?},
+      onRate(value) {
+        $.ajax({
+          url: '/ratings/' + "#{@rating.id}",
+          type: 'PATCH',
+          data: { score: value, type: 'management' }
+        });
+      }
+    })
+  ;
+        

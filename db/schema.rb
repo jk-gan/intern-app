@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620135750) do
+ActiveRecord::Schema.define(version: 20170711081425) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id"
@@ -64,6 +64,48 @@ ActiveRecord::Schema.define(version: 20170620135750) do
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "university"
+    t.string "course"
+    t.string "phone"
+    t.integer "user_id"
+    t.integer "gender", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string "resume_file_name"
+    t.string "resume_content_type"
+    t.integer "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "company_id"
+    t.float "culture_score", default: 0.0
+    t.float "environment_score", default: 0.0
+    t.float "cleanliness_score", default: 0.0
+    t.float "location_score", default: 0.0
+    t.float "learning_score", default: 0.0
+    t.float "management_score", default: 0.0
+    t.boolean "new_culture_score", default: true
+    t.boolean "new_environment_score", default: true
+    t.boolean "new_cleanliness_score", default: true
+    t.boolean "new_location_score", default: true
+    t.boolean "new_learning_score", default: true
+    t.boolean "new_management_score", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_ratings_on_company_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "scopes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -92,6 +134,24 @@ ActiveRecord::Schema.define(version: 20170620135750) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "welfares", force: :cascade do |t|

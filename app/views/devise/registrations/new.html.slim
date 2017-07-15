@@ -1,0 +1,46 @@
+.authenticate
+  .authenticate-card
+    .ui.card
+      = link_to root_path do 
+        i.remove.icon.back-to-btn
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .form-inputs
+          p.ui.header.dividing.authenticate_header Sign up & Discover More
+          .ui.form
+            .field
+              = f.input :email, required: true, autofocus: true, label: false, placeholder: "Email Address"
+            .field
+              = f.input :password, required: true, label: false, placeholder: "Password ( minimum #{@minimum_password_length} characters )"
+            .field
+              = f.input :password_confirmation, required: true, label: false, placeholder: "Password Confirmation"
+            = f.simple_fields_for :profile_attributes do |profile_form|
+              .field
+                label Personal Info
+                = profile_form.input :first_name, label: false, placeholder: "First Name"
+              .field
+                = profile_form.input :last_name, label: false, placeholder: "Last Name"
+              .field
+                = profile_form.input :gender, collection: Profile.genders.keys, selected: "Male", label: false, placeholder: "Gender", input_html: { class: 'ui fluid dropdown' } 
+              .field
+                = profile_form.input :phone, label: false, placeholder: "Phone Number"
+              / .field
+              /   label Personal Image
+              /   = profile_form.input :avatar, as: :file, label: false, placeholder: "Personal Image"
+              .field
+                label Educational Info
+                = profile_form.input :university, label: false, placeholder: "University Name"
+              .field
+                = profile_form.input :course, label: false, placeholder: "Course Name"
+              / .field
+              /   label Resume
+              /   = profile_form.input :resume, as: :file, label: false, placeholder: "Resume"
+          .form-actions
+            p.agreement By signing up, I agree to StepUp's Terms of Service, Nondiscrimination Policy, Payments Terms of Service and Privacy Policy. Althought, we do not have any.
+            = f.button :submit, "Apply Now", class: "authenticate-btn"
+            hr.dividing.other-authenticate-divider
+            .ui.centered.grid
+              .six.wide.tablet.eight.wide.computer.column 
+                p.other-authenticate-text Already have an account?
+              .six.wide.tablet.eight.wide.computer.column 
+                = link_to "Log in", new_session_path(resource_name), class: "other-authenticate-btn"
