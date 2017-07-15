@@ -31,37 +31,43 @@ section#company-section
           .four.wide.computer.eight.wide.tablet.column.intern-desc-title
             p Intern Job & Info
           .twelve.wide.computer.eight.wide.tablet.column.intern-welfare
-            p 
-              span Name :&nbsp;
-              = @first_job.name
-            p
-              span Allowance :&nbsp;
-              | RM
-              = @first_job.welfare.allowance
-            p
-              span Working Hour :&nbsp;
-              = @first_job.working_hours
-            p 
-              span Dress Code :&nbsp;
-              = @first_job.dress_code
-            p 
-              span Job Scope :&nbsp;
-              = @first_job.all_scopes
-            p 
-              span Training Provided :&nbsp;
-              = @first_job.welfare.has_training? ? @first_job.welfare.training_detail : 'No training is provided'
-            p 
-              span Free Food :&nbsp;
-              = @first_job.welfare.has_free_food? ? @first_job.welfare.free_food_detail : 'No free food is provided'
-            p 
-              span Accomodation Provided :&nbsp;
-              = @first_job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'
-        .ui.centered.grid.no.margin
-          .four.wide.computer.eight.wide.tablet.column.intern-desc-title
-            p Description
-          .twelve.wide.computer.eight.wide.tablet.column.intern-welfare
-            p 
-              span = @first_job.description
+            - if @first_job.nil?
+              p No job available
+            - else
+              p 
+                span Name :&nbsp;
+                = @first_job.name
+              p
+                span Allowance :&nbsp;
+                | RM
+                = @first_job.welfare.allowance
+              p
+                span Working Hour :&nbsp;
+                = @first_job.working_hours
+              p 
+                span Dress Code :&nbsp;
+                = @first_job.dress_code
+              p 
+                span Job Scope :&nbsp;
+                = @first_job.all_scopes
+              p 
+                span Training Provided :&nbsp;
+                = @first_job.welfare.has_training? ? @first_job.welfare.training_detail : 'No training is provided'
+              p 
+                span Free Food :&nbsp;
+                = @first_job.welfare.has_free_food? ? @first_job.welfare.free_food_detail : 'No free food is provided'
+              p 
+                span Accomodation Provided :&nbsp;
+                = @first_job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'
+        
+        - if @first_job
+          .ui.centered.grid.no.margin
+            .four.wide.computer.eight.wide.tablet.column.intern-desc-title
+              p Description
+            .twelve.wide.computer.eight.wide.tablet.column.intern-welfare
+              p 
+                span = @first_job.description
+                
         .ui.centered.grid.no.margin
           .four.wide.computer.eight.wide.tablet.column.intern-desc-title
             p More Jobs
