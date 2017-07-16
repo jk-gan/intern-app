@@ -1,0 +1,37 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id                :integer          not null, primary key
+#  name              :string
+#  description       :text
+#  size              :integer
+#  website           :text
+#  status            :integer          default("pending")
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  logo_file_name    :string
+#  logo_content_type :string
+#  logo_file_size    :integer
+#  logo_updated_at   :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+apple:
+  name: Apple
+  description: Apple company description
+  size: 10000
+  website: https://www.apple.com
+  # status: 1
+
+google:
+  name: Google
+  description: Google company description
+  size: 10000
+  website: https://www.google.com
+  # status: 1

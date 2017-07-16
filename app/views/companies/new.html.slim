@@ -1,0 +1,42 @@
+  .create_company.ui.centered.grid.no.margin
+	.sixteen.wide.mobile.eight.wide.tablet.eight.wide.computer.column.create_company_form.no.padding
+		= simple_form_for @company, html: {multipart: true, class: "company-form ui form clearfix"} do |form|
+			.field.upload-field
+				a.upload-btn
+					.teal-btn
+						i.large.cloud.upload.icon
+						| Upload Company Logo
+			= form.input :logo, label: false, class: "file"
+			.field
+				= form.input :name, label: false, placeholder: 'Company Name'
+			.field
+				= form.input :description, label: false, placeholder: 'Describe the company'
+			.field
+				= form.input :size, label: false, placeholder: 'Company Size'
+			.field
+				= form.input :website, label: false, placeholder: 'Company Website'
+			.field
+				= form.input :all_tags, placeholder: "Tags seperated with comma", label: false
+			= form.simple_fields_for :address do |address_form|
+				h4.ui.header Company Location
+				.field
+					= address_form.input :street_address, label: false, placeholder: 'Street Address'
+				.field
+					= address_form.input :city, label: false, placeholder: 'City'
+				.field
+					= address_form.input :state, label: false, placeholder: 'State'
+				.field.select-field
+					= address_form.input :country, priority: ["Malaysia", "Singapore", "Thailand"], label: false, placeholder: 'Country'
+					i.large.angle.down.icon
+				.field
+					= address_form.input :postcode, label: false, placeholder: 'Post Code'
+			= form.button :submit, "Save", class: "move right red-btn"
+	
+	.sixteen.wide.mobile.eight.wide.tablet.eight.wide.computer.column.create_company_info.no.padding
+		.card
+			h3.ui.header Complete the task
+			p All these details is important when a student finding a right company, 
+			| some of them might love big coorporate, some like to work in startup.
+		.card.upload-preview
+			img
+				h3.ui

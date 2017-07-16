@@ -1,0 +1,18 @@
+.authenticate
+  .authenticate-card
+    .ui.card
+      = link_to companies_path do 
+        i.remove.icon.back-to-btn
+      h1 = @job.name
+      p = @job.description
+      p = @job.working_hours
+      p = @job.dress_code
+      p = @job.all_scopes
+      p = @job.welfare.allowance
+      p = @job.welfare.has_training? ? @job.welfare.training_detail : 'No training is provided'
+      p = @job.welfare.has_free_food? ? @job.welfare.free_food_detail : 'No free food is provided'
+      p = @job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'
+
+      br
+      button.ui.button
+        = link_to "Edit", edit_job_path

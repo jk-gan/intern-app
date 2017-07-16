@@ -1,0 +1,103 @@
+$('#average_star')
+  .rating({
+    initialRating: #{@company.average_rating.to_i},
+    maxRating: 5,
+    interactive: false
+  })
+;
+
+$('#culture_star')
+  .rating({
+    initialRating: #{@company.average_culture_rating.to_i},
+    maxRating: 5,
+    interactive: #{user_signed_in?},
+    clearable: #{user_signed_in?},
+    onRate(value) {
+      $.ajax({
+        url: '/ratings/' + "#{@rating.id}",
+        type: 'PATCH',
+        data: { score: value, type: 'culture' }
+      });
+    }
+  })
+;
+
+$('#environment_star')
+  .rating({
+    initialRating: #{@company.average_environment_rating.to_i},
+    maxRating: 5,
+    interactive: #{user_signed_in?},
+    clearable: #{user_signed_in?},
+    onRate(value) {
+      $.ajax({
+        url: '/ratings/' + "#{@rating.id}",
+        type: 'PATCH',
+        data: { score: value, type: 'environment' }
+      });
+    }
+  })
+;
+
+$('#cleanliness_star')
+  .rating({
+    initialRating: #{@company.average_cleanliness_rating.to_i},
+    maxRating: 5,
+    interactive: #{user_signed_in?},
+    clearable: #{user_signed_in?},
+    onRate(value) {
+      $.ajax({
+        url: '/ratings/' + "#{@rating.id}",
+        type: 'PATCH',
+        data: { score: value, type: 'cleanliness' }
+      });
+    }
+  })
+;
+
+$('#location_star')
+  .rating({
+    initialRating: #{@company.average_location_rating.to_i},
+    maxRating: 5,
+    interactive: #{user_signed_in?},
+    clearable: #{user_signed_in?},
+    onRate(value) {
+      $.ajax({
+        url: '/ratings/' + "#{@rating.id}",
+        type: 'PATCH',
+        data: { score: value, type: 'location' }
+      });
+    }
+  })
+;
+
+$('#learning_star')
+  .rating({
+    initialRating: #{@company.average_learning_rating.to_i},
+    maxRating: 5,
+    interactive: #{user_signed_in?},
+    clearable: #{user_signed_in?},
+    onRate(value) {
+      $.ajax({
+        url: '/ratings/' + "#{@rating.id}",
+        type: 'PATCH',
+        data: { score: value, type: 'learning' }
+      });
+    }
+  })
+;
+
+$('#management_star')
+  .rating({
+    initialRating: #{@company.average_management_rating.to_i},
+    maxRating: 5,
+    interactive: #{user_signed_in?},
+    clearable: #{user_signed_in?},
+    onRate(value) {
+      $.ajax({
+        url: '/ratings/' + "#{@rating.id}",
+        type: 'PATCH',
+        data: { score: value, type: 'management' }
+      });
+    }
+  })
+;

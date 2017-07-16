@@ -1,0 +1,12 @@
+hr
+= link_to job do
+ div
+   p = job.name
+   p = truncate(job.description, length: 150)
+   p = job.working_hours
+   p = job.dress_code
+   p = job.all_scopes
+   p = job.welfare.allowance
+   p = job.welfare.has_training? ? job.welfare.training_detail : 'No training is provided'
+   p = job.welfare.has_free_food? ? job.welfare.free_food_detail : 'No free food is provided'
+   p = job.welfare.has_accomodation? ? 'Accomodation is provided' : 'No accomodation is provided'

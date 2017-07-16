@@ -1,0 +1,108 @@
+.authenticate{
+  width: 100%;
+  min-height: 100%;
+  background-image: url('/assets/bg-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0px;
+
+  .authenticate-card{
+    width: 90%;
+    max-width: 567px;
+    margin: 0px auto;
+
+    .ui.card{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px 30px !important;
+      position: relative !important;
+      .back-to-btn{
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        color: #dce0e0;
+        font-size: 16px;
+        &:hover{
+          color: #4a4a4a;
+        }
+      }
+    }
+
+
+    .form-inputs{
+      padding: 10px;
+      .remember-me-checkbox{
+          label.checkbox{
+            display: inline-block;
+
+            input.boolean{
+              display: inline-block;
+              height: 20px;
+              margin-right: 10px;
+              color: #4a4a4a;
+            }
+          }
+      }
+
+      .form .field input{
+        height: 50px;
+      }
+
+       p.authenticate_header {
+         padding: 15px 0px;
+         font-weight: normal;
+         text-align: center;
+         color: #484848;
+       }
+    }
+    .form-actions{
+      margin-top: 20px;
+
+      p.agreement{
+        font-size: 10px;
+        color: #636363;
+      }
+
+      a.forgot-password-link{
+        display: block;
+        text-align: right;
+        color: #008489;
+        margin-top: 10px;
+      }
+
+      .authenticate-btn{
+        height: 60px;
+        border-radius: 2px;
+        background-color: #ff5a5f;
+        color: #fff;
+        display: block;
+        width: 100%;
+        border: none;
+      }
+
+      hr.other-authenticate-divider{
+        margin-top: 30px;
+        border-top: 1px solid #dce0e0;
+      }
+
+      p.other-authenticate-text{
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 14px;
+        color: #4a4a4a;
+      }
+
+      .other-authenticate-btn{
+        float: right;
+        border-radius: 3px;
+        border: 1px solid #ff5a5f;
+        margin-top: 10px;
+        padding: 10px;
+        width: 140px;
+        color: #ff5a5f;
+        text-align: center;
+      }
+    }
+
+  }
+}
