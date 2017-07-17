@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
   def update
     if @company.update(company_params)
       flash[:success] = "Company successfully edited"
-      redirect_to company_url(@company.id)
+      redirect_to @company
     else
       flash[:error] = "Failed to edit company"
       render :edit
