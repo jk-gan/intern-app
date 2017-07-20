@@ -12,7 +12,7 @@
         #average-rating.rating-catergory
           #average_star.ui.star.rating
           p.description  
-            = company.ratings.count 
+            = company.ratings.not_empty.count 
             | &nbsp;reviews
         javascript:
           $('#average_star')
