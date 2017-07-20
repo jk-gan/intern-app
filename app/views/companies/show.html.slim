@@ -129,7 +129,7 @@ section#company-section
               .ten.wide.column.contact-detail
                 p.contact-name = @company.contact.name
                 p = @company.contact.role
-                = link_to "Edit Contact Person", edit_contact_path(@company.id, @company.contact.id)
+                = link_to "Edit Contact Person", edit_contact_path(@company.contact.id)
         .application
           p Apply now and get a chance for interview session
           a.apply-btn href="#" Apply Now
