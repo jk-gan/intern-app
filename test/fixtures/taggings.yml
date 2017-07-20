@@ -13,6 +13,11 @@
 #  index_taggings_on_company_id  (company_id)
 #  index_taggings_on_tag_id      (tag_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (tag_id => tags.id)
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
