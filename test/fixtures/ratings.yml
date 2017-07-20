@@ -19,6 +19,7 @@
 #  new_management_score  :boolean          default(TRUE)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  empty                 :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -30,7 +31,7 @@
 
 one:
   user: one
-  company: one
+  company: apple
   culture_score: 1.5
   environment_score: 1.5
   cleanliness_score: 1.5
@@ -46,7 +47,7 @@ one:
 
 two:
   user: two
-  company: two
+  company: google
   culture_score: 1.5
   environment_score: 1.5
   cleanliness_score: 1.5

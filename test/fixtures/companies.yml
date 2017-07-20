@@ -27,11 +27,11 @@ apple:
   description: Apple company description
   size: 10000
   website: https://www.apple.com
-  # status: 1
+  status: 2
 
 google:
   name: Google
   description: Google company description
   size: 10000
   website: https://www.google.com
-  # status: 1
+  status: 2
