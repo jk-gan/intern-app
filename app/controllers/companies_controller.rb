@@ -49,10 +49,7 @@ class CompaniesController < ApplicationController
   def show
     @ratings = @company.ratings
     if current_user
-      @rating = @company.ratings.where(user_id: current_user.id).first
-      unless @rating
-        @rating = Rating.create(company_id: @company.id, user_id: current_user.id)
-      end
+      @rating = @company.ratings.where(user_id: current_user.id).first_or_create
     else
       @rating = Rating.new
     end

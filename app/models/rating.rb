@@ -19,6 +19,7 @@
 #  new_management_score  :boolean          default(TRUE)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  empty                 :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -29,4 +30,6 @@
 class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :company
+
+  scope :not_empty, -> { where(empty: false) }
 end
