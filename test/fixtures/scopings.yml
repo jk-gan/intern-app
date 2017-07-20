@@ -13,6 +13,11 @@
 #  index_scopings_on_job_id    (job_id)
 #  index_scopings_on_scope_id  (scope_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (job_id => jobs.id)
+#  fk_rails_...  (scope_id => scopes.id)
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 

@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20170720072841) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "company_id"
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "company_id"
     t.text "street_address"
     t.string "city"
     t.string "state"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.index ["company_id"], name: "index_addresses_on_company_id"
   end
 
-  create_table "companies", force: :cascade do |t|
+  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "description"
     t.integer "size"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.datetime "logo_updated_at"
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.integer "company_id"
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "company_id"
     t.string "name"
     t.string "role"
     t.string "contact_number"
@@ -53,24 +53,24 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.integer "company_id"
+  create_table "jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "company_id"
     t.string "name"
     t.text "description"
-    t.float "working_hours"
+    t.float "working_hours", limit: 24
     t.string "dress_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "university"
     t.string "course"
     t.string "phone"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "gender", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,15 +85,15 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
-    t.float "culture_score", default: 0.0
-    t.float "environment_score", default: 0.0
-    t.float "cleanliness_score", default: 0.0
-    t.float "location_score", default: 0.0
-    t.float "learning_score", default: 0.0
-    t.float "management_score", default: 0.0
+  create_table "ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.float "culture_score", limit: 24, default: 0.0
+    t.float "environment_score", limit: 24, default: 0.0
+    t.float "cleanliness_score", limit: 24, default: 0.0
+    t.float "location_score", limit: 24, default: 0.0
+    t.float "learning_score", limit: 24, default: 0.0
+    t.float "management_score", limit: 24, default: 0.0
     t.boolean "new_culture_score", default: true
     t.boolean "new_environment_score", default: true
     t.boolean "new_cleanliness_score", default: true
@@ -107,37 +107,37 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
-  create_table "scopes", force: :cascade do |t|
+  create_table "scopes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scopings", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "scope_id"
+  create_table "scopings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "job_id"
+    t.bigint "scope_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_scopings_on_job_id"
     t.index ["scope_id"], name: "index_scopings_on_scope_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer "company_id"
-    t.integer "tag_id"
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "company_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_taggings_on_company_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "welfares", force: :cascade do |t|
-    t.integer "job_id"
+  create_table "welfares", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "job_id"
     t.boolean "training"
     t.text "training_detail"
     t.boolean "accomodation"
@@ -169,4 +169,15 @@ ActiveRecord::Schema.define(version: 20170720072841) do
     t.index ["job_id"], name: "index_welfares_on_job_id"
   end
 
+  add_foreign_key "addresses", "companies"
+  add_foreign_key "contacts", "companies"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "ratings", "companies"
+  add_foreign_key "ratings", "users"
+  add_foreign_key "scopings", "jobs"
+  add_foreign_key "scopings", "scopes"
+  add_foreign_key "taggings", "companies"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "welfares", "jobs"
 end

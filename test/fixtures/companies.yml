@@ -3,15 +3,15 @@
 # Table name: companies
 #
 #  id                :integer          not null, primary key
-#  name              :string
-#  description       :text
+#  name              :string(255)
+#  description       :text(65535)
 #  size              :integer
-#  website           :text
+#  website           :text(65535)
 #  status            :integer          default("pending")
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  logo_file_name    :string
-#  logo_content_type :string
+#  logo_file_name    :string(255)
+#  logo_content_type :string(255)
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
 #
