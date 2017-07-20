@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class CompaniesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    # sign in admin
+    sign_in users(:admin)
+
     @company = companies(:apple)
+    @logo = fixture_file_upload 'abc.png'
+    @company.logo = @logo
   end
 
   test "should get index" do
