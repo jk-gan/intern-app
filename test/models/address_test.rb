@@ -4,17 +4,21 @@
 #
 #  id             :integer          not null, primary key
 #  company_id     :integer
-#  street_address :text
-#  city           :string
-#  state          :string
-#  country        :string
-#  postcode       :string
+#  street_address :text(65535)
+#  city           :string(255)
+#  state          :string(255)
+#  country        :string(255)
+#  postcode       :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 # Indexes
 #
 #  index_addresses_on_company_id  (company_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
 #
 
 require 'test_helper'

@@ -4,16 +4,20 @@
 #
 #  id            :integer          not null, primary key
 #  company_id    :integer
-#  name          :string
-#  description   :text
-#  working_hours :float
-#  dress_code    :string
+#  name          :string(255)
+#  description   :text(65535)
+#  working_hours :float(24)
+#  dress_code    :string(255)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 # Indexes
 #
 #  index_jobs_on_company_id  (company_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
 #
 
 class Job < ApplicationRecord
