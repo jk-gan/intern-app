@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711081425) do
+ActiveRecord::Schema.define(version: 20170720072841) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170711081425) do
     t.boolean "new_management_score", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "empty", default: true
     t.index ["company_id"], name: "index_ratings_on_company_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end

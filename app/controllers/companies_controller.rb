@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
   def update
     if @company.update(company_params)
       flash[:success] = "Company successfully edited"
-      redirect_to company_url(@company.id)
+      redirect_to @company
     else
       flash[:error] = "Failed to edit company"
       render :edit
@@ -49,10 +49,7 @@ class CompaniesController < ApplicationController
   def show
     @ratings = @company.ratings
     if current_user
-      @rating = @company.ratings.where(user_id: current_user.id).first
-      unless @rating
-        @rating = Rating.create(company_id: @company.id, user_id: current_user.id)
-      end
+      @rating = @company.ratings.where(user_id: current_user.id).first_or_create
     else
       @rating = Rating.new
     end

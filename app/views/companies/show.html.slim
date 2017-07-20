@@ -81,7 +81,7 @@ section#company-section
         .intern-job-rating
           #average-rating.rating-catergory
             p 
-              = @ratings.count
+              = @ratings.not_empty.count
               | &nbsp;Reviews
             div.ui.star.rating#average_star
           .ui.grid.no.margin
