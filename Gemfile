@@ -28,6 +28,8 @@ gem 'paperclip', '~> 5.1.0'
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'devise'
 gem 'pundit'
+gem 'webpacker', '~> 2.0'
+gem 'react-rails'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

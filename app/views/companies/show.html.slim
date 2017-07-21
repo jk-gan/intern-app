@@ -1,5 +1,8 @@
 / - if flash[:success]
 /   p = flash[:success]
+- content_for :react do
+  = javascript_pack_tag 'application'
+
 .hero-div
 .hero-main-header
   = image_tag @company.logo.url(:thumb)
@@ -79,6 +82,7 @@ section#company-section
                     .more-jobs.card-shadow
                       p = job.name
         .intern-job-rating
+          = react_component("review_area", average_rating: @ratings.not_empty.count, average_star: @company.average_rating.to_i, culture_star: @company.average_culture_rating.to_i, environment_star: @company.average_environment_rating.to_i, cleanliness_star: @company.average_cleanliness_rating.to_i, location_star: @company.average_location_rating.to_i, learning_star: @company.average_learning_rating.to_i, management_star: @company.average_management_rating.to_i )
           #average-rating.rating-catergory
             p 
               = @ratings.not_empty.count
