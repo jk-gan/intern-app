@@ -1,5 +1,8 @@
 / - if flash[:success]
 /   p = flash[:success]
+- content_for :react do
+  = javascript_pack_tag 'hello_react'
+
 .hero-div
 .hero-main-header
   = image_tag @company.logo.url(:thumb)
@@ -79,6 +82,7 @@ section#company-section
                     .more-jobs.card-shadow
                       p = job.name
         .intern-job-rating
+          div#react-rating
           #average-rating.rating-catergory
             p 
               = @ratings.not_empty.count
