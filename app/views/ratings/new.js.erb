@@ -1,0 +1,60 @@
+$('#modal-review-field').html("<%= j (render 'ratings/new', company: @rating.company) %>");
+
+$('#culture_star')
+  .rating({
+    maxRating: 5,
+    clearable: true
+  })
+;
+
+$('#environment_star')
+  .rating({
+    maxRating: 5,
+    clearable: true
+  })
+;
+
+$('#cleanliness_star')
+  .rating({
+    maxRating: 5,
+    clearable: true
+  })
+;
+
+$('#location_star')
+  .rating({
+    maxRating: 5,
+    clearable: true
+  })
+;
+
+$('#learning_star')
+  .rating({
+    maxRating: 5,
+    clearable: true
+  })
+;
+
+$('#management_star')
+  .rating({
+    maxRating: 5,
+    clearable: true
+  })
+;
+
+$('.ui.modal')
+  .modal({
+    blurring: true
+  })
+  .modal('setting', 'transition', 'fade up')
+  .modal('attach events', '.review-button', 'show')
+  .modal({
+    onDeny() {
+      alert('Wait not yet!');
+      return false;
+    },
+    onApprove() {
+      alert('Approved!');
+    }
+  })
+;

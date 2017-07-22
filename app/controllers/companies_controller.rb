@@ -48,10 +48,7 @@ class CompaniesController < ApplicationController
 
   def show
     @ratings = @company.ratings
-    if current_user
-      @rating = Rating.new
-      @rating.build_review
-    end
+    @should_show_new_rating = @company.ratings.where(user_id: current_user.id).empty? if current_user
     @first_job = @company.jobs.first
     @company_job = @company.jobs.drop(1)
   end

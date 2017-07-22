@@ -4,8 +4,14 @@ class RatingsController < ApplicationController
 
   end
 
-  def create
+  def new
+    @company = Company.find(params[:company_id])
+    @rating = @company.ratings.new
+    @rating.build_review
+  end
 
+  def create
+    
   end
 
   private
@@ -24,7 +30,7 @@ class RatingsController < ApplicationController
       ],
   	)
   end
-  
+
   # def update
   #   @rating = Rating.find(params[:id])
   #   @company = @rating.company

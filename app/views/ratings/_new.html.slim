@@ -1,0 +1,5 @@
+= simple_form_for @rating, url: company_ratings_path(company), method: :post, remote: true do |form|
+  = form.simple_fields_for :review do |review_form|
+    div.ui.form
+     div.field
+      = review_form.input :body, label: false, placeholder: 'Write your review here'

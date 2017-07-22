@@ -103,8 +103,10 @@ section#company-section
             .rating-catergory.eight.wide.column
               p Management
               div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_management_rating.to_i}
-          button.ui.button.review-button
-            p Add a Review
+          - if current_user and @should_show_new_rating
+            = link_to new_company_rating_path(@company), remote: true do
+              button.ui.button.review-button.basic
+                p Add a Review
 
       .action-area
         = link_to edit_company_path(@company.id) do 
@@ -174,16 +176,49 @@ div.ui.modal
         p Management
         div.ui.star.rating.move-left#management_star
     br
-    = simple_form_for @rating, url: company_ratings_path(@company), method: :post, remote: true do |form|
-      = form.simple_fields_for :review do |review_form|
-        div.ui.form
-         div.field
-          = review_form.input :body, label: false, placeholder: 'Write your review here'
+    div#modal-review-field
   div.actions
     div.ui.button.cancel
       | Cancel
     div.ui.button.ok
       | Submit
+
+
+/ div.ui.modal
+/   i.close.icon
+/   div.header
+/     | Add a Review
+/   div.content  
+/     .ui.grid.no.margin
+/       .rating-catergory.eight.wide.column
+/         p Culture
+/         div.ui.star.rating.move-left#culture_star
+/       .rating-catergory.eight.wide.column
+/         p Environment
+/         div.ui.star.rating.move-left#environment_star
+/       .rating-catergory.eight.wide.column
+/         p Cleanliness
+/         div.ui.star.rating.move-left#cleanliness_star
+/       .rating-catergory.eight.wide.column
+/         p Location
+/         div.ui.star.rating.move-left#location_star
+/       .rating-catergory.eight.wide.column
+/         p Learning
+/         div.ui.star.rating.move-left#learning_star
+/       .rating-catergory.eight.wide.column
+/         p Management
+/         div.ui.star.rating.move-left#management_star
+/     br
+/     = simple_form_for @rating, url: company_ratings_path(@company), method: :post, remote: true do |form|
+/       = form.simple_fields_for :review do |review_form|
+/         div.ui.form
+/          div.field
+/           = review_form.input :body, label: false, placeholder: 'Write your review here'
+/   div.actions
+/     div.ui.button.cancel
+/       | Cancel
+/     div.ui.button.ok
+/       | Submit
 
  
 javascript:
@@ -199,42 +234,6 @@ javascript:
     .rating({
       maxRating: 5,
       interactive: false
-    })
-  ;
-  
-  $('#culture_star')
-    .rating({
-      maxRating: 5,
-    })
-  ;
-  
-  $('#environment_star')
-    .rating({
-      maxRating: 5,
-    })
-  ;
-  
-  $('#cleanliness_star')
-    .rating({
-      maxRating: 5,
-    })
-  ;
-  
-  $('#location_star')
-    .rating({
-      maxRating: 5,
-    })
-  ;
-  
-  $('#learning_star')
-    .rating({
-      maxRating: 5,
-    })
-  ;
-  
-  $('#management_star')
-    .rating({
-      maxRating: 5,
     })
   ;
   
