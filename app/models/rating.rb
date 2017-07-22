@@ -38,4 +38,6 @@ class Rating < ApplicationRecord
   has_one :review
 
   scope :not_empty, -> { where(empty: false) }
+
+  accepts_nested_attributes_for :review
 end

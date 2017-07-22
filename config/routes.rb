@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :companies, shallow: true do
     resources :contacts, only: [:new, :create, :edit, :update]
     resources :jobs
+    resources :ratings
   end
 
-  resources :ratings, only: :update
+
 
   get 'tags/:tag', to: 'companies#index', as: :tag
 end

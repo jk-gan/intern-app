@@ -87,22 +87,24 @@ section#company-section
           .ui.grid.no.margin
             .rating-catergory.eight.wide.column
               p Culture
-              div.ui.star.rating.move-left#culture_star
+              div.ui.star.rating.move-left#culture_star*{'data-rating' => @company.average_culture_rating.to_i, 'data-max-rating' => 5}
             .rating-catergory.eight.wide.column
               p Environment
-              div.ui.star.rating.move-left#environment_star
+              div.ui.star.rating.move-left#environment_star*{'data-rating' => @company.average_environment_rating.to_i, 'data-max-rating' => 5}
             .rating-catergory.eight.wide.column
               p Cleanliness
-              div.ui.star.rating.move-left#cleanliness_star
+              div.ui.star.rating.move-left#cleanliness_star*{'data-rating' => @company.average_cleanliness_rating.to_i, 'data-max-rating' => 5}
             .rating-catergory.eight.wide.column
               p Location
-              div.ui.star.rating.move-left#location_star
+              div.ui.star.rating.move-left#location_star*{'data-rating' => @company.average_location_rating.to_i, 'data-max-rating' => 5}
             .rating-catergory.eight.wide.column
               p Learning
-              div.ui.star.rating.move-left#learning_star
+              div.ui.star.rating.move-left#learning_star*{'data-rating' => @company.average_learning_rating.to_i, 'data-max-rating' => 5}
             .rating-catergory.eight.wide.column
               p Management
-              div.ui.star.rating.move-left#management_star
+              div.ui.star.rating.move-left#management_star*{'data-rating' => @company.average_management_rating.to_i, 'data-max-rating' => 5}
+          button.ui.button.review-button
+            p Add a Review
 
       .action-area
         = link_to edit_company_path(@company.id) do 
@@ -145,7 +147,39 @@ section#company-section
             .column.social-btn.twitter
               p Twitter
             .column.social-btn.insta
-              p Instagram
+              p Instagram      
+/ Modal
+div.ui.modal
+  i.close.icon
+  div.header
+    | Add a Review
+  div.content
+    .intern-job-rating
+      .ui.grid.no.margin
+        .rating-catergory.eight.wide.column
+          p Culture
+          div.ui.star.rating.move-left#culture_star
+        .rating-catergory.eight.wide.column
+          p Environment
+          div.ui.star.rating.move-left#environment_star
+        .rating-catergory.eight.wide.column
+          p Cleanliness
+          div.ui.star.rating.move-left#cleanliness_star
+        .rating-catergory.eight.wide.column
+          p Location
+          div.ui.star.rating.move-left#location_star
+        .rating-catergory.eight.wide.column
+          p Learning
+          div.ui.star.rating.move-left#learning_star
+        .rating-catergory.eight.wide.column
+          p Management
+          div.ui.star.rating.move-left#management_star
+  div.actions
+    div.ui.button.cancel
+      | Cancel
+    div.ui.button.ok
+      | Submit
+
  
 javascript:
   $('#average_star')
@@ -158,96 +192,53 @@ javascript:
   
   $('#culture_star')
     .rating({
-      initialRating: #{@company.average_culture_rating.to_i},
-      maxRating: 5,
-      interactive: #{user_signed_in?},
-      clearable: #{user_signed_in?},
-      onRate(value) {
-        $.ajax({
-          url: '/ratings/' + "#{@rating.id}",
-          type: 'PATCH',
-          data: { score: value, type: 'culture' }
-        });
-      }
+      interactive: false
     })
   ;
   
   $('#environment_star')
     .rating({
-      initialRating: #{@company.average_environment_rating.to_i},
-      maxRating: 5,
-      interactive: #{user_signed_in?},
-      clearable: #{user_signed_in?},
-      onRate(value) {
-        $.ajax({
-          url: '/ratings/' + "#{@rating.id}",
-          type: 'PATCH',
-          data: { score: value, type: 'environment' }
-        });
-      }
+      interactive: false
     })
   ;
   
   $('#cleanliness_star')
     .rating({
-      initialRating: #{@company.average_cleanliness_rating.to_i},
-      maxRating: 5,
-      interactive: #{user_signed_in?},
-      clearable: #{user_signed_in?},
-      onRate(value) {
-        $.ajax({
-          url: '/ratings/' + "#{@rating.id}",
-          type: 'PATCH',
-          data: { score: value, type: 'cleanliness' }
-        });
-      }
+      interactive: false
     })
   ;
   
   $('#location_star')
     .rating({
-      initialRating: #{@company.average_location_rating.to_i},
-      maxRating: 5,
-      interactive: #{user_signed_in?},
-      clearable: #{user_signed_in?},
-      onRate(value) {
-        $.ajax({
-          url: '/ratings/' + "#{@rating.id}",
-          type: 'PATCH',
-          data: { score: value, type: 'location' }
-        });
-      }
+      interactive: false
     })
   ;
   
   $('#learning_star')
     .rating({
-      initialRating: #{@company.average_learning_rating.to_i},
-      maxRating: 5,
-      interactive: #{user_signed_in?},
-      clearable: #{user_signed_in?},
-      onRate(value) {
-        $.ajax({
-          url: '/ratings/' + "#{@rating.id}",
-          type: 'PATCH',
-          data: { score: value, type: 'learning' }
-        });
-      }
+      interactive: false
     })
   ;
   
   $('#management_star')
     .rating({
-      initialRating: #{@company.average_management_rating.to_i},
-      maxRating: 5,
-      interactive: #{user_signed_in?},
-      clearable: #{user_signed_in?},
-      onRate(value) {
-        $.ajax({
-          url: '/ratings/' + "#{@rating.id}",
-          type: 'PATCH',
-          data: { score: value, type: 'management' }
-        });
+      interactive: false
+    })
+  ;
+  
+  $('.ui.modal')
+    .modal({
+      blurring: true
+    })
+    .modal('setting', 'transition', 'fade up')
+    .modal('attach events', '.review-button', 'show')
+    .modal({
+      onDeny() {
+        alert('Wait not yet!');
+        return false;
+      },
+      onApprove() {
+        alert('Approved!');
       }
     })
   ;
