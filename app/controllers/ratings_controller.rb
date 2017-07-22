@@ -11,7 +11,15 @@ class RatingsController < ApplicationController
   end
 
   def create
-    
+    @company = Company.find(params[:company_id])
+    @rating = @company.ratings.new(rating_params)
+    @rating.user = current_user
+    if @rating.save
+      redirect_to @company
+    else
+      Rails.logger.info "Error #{@rating.errors.full_messages}"
+      redirect_to @company
+    end
   end
 
   private

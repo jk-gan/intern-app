@@ -1,4 +1,10 @@
 = simple_form_for @rating, url: company_ratings_path(company), method: :post, remote: true do |form|
+  = form.input :culture_score, as: :hidden
+  = form.input :environment_score, as: :hidden
+  = form.input :cleanliness_score, as: :hidden
+  = form.input :location_score, as: :hidden
+  = form.input :learning_score, as: :hidden
+  = form.input :management_score, as: :hidden
   = form.simple_fields_for :review do |review_form|
     div.ui.form
      div.field
