@@ -87,22 +87,22 @@ section#company-section
           .ui.grid.no.margin
             .rating-catergory.eight.wide.column
               p Culture
-              div.ui.star.rating.move-left#culture_star*{'data-rating' => @company.average_culture_rating.to_i, 'data-max-rating' => 5}
+              div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_culture_rating.to_i}
             .rating-catergory.eight.wide.column
               p Environment
-              div.ui.star.rating.move-left#environment_star*{'data-rating' => @company.average_environment_rating.to_i, 'data-max-rating' => 5}
+              div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_environment_rating.to_i}
             .rating-catergory.eight.wide.column
               p Cleanliness
-              div.ui.star.rating.move-left#cleanliness_star*{'data-rating' => @company.average_cleanliness_rating.to_i, 'data-max-rating' => 5}
+              div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_cleanliness_rating.to_i}
             .rating-catergory.eight.wide.column
               p Location
-              div.ui.star.rating.move-left#location_star*{'data-rating' => @company.average_location_rating.to_i, 'data-max-rating' => 5}
+              div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_location_rating.to_i}
             .rating-catergory.eight.wide.column
               p Learning
-              div.ui.star.rating.move-left#learning_star*{'data-rating' => @company.average_learning_rating.to_i, 'data-max-rating' => 5}
+              div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_learning_rating.to_i}
             .rating-catergory.eight.wide.column
               p Management
-              div.ui.star.rating.move-left#management_star*{'data-rating' => @company.average_management_rating.to_i, 'data-max-rating' => 5}
+              div.ui.star.rating.move-left.rating-star*{'data-rating' => @company.average_management_rating.to_i}
           button.ui.button.review-button
             p Add a Review
 
@@ -153,27 +153,32 @@ div.ui.modal
   i.close.icon
   div.header
     | Add a Review
-  div.content
-    .intern-job-rating
-      .ui.grid.no.margin
-        .rating-catergory.eight.wide.column
-          p Culture
-          div.ui.star.rating.move-left#culture_star
-        .rating-catergory.eight.wide.column
-          p Environment
-          div.ui.star.rating.move-left#environment_star
-        .rating-catergory.eight.wide.column
-          p Cleanliness
-          div.ui.star.rating.move-left#cleanliness_star
-        .rating-catergory.eight.wide.column
-          p Location
-          div.ui.star.rating.move-left#location_star
-        .rating-catergory.eight.wide.column
-          p Learning
-          div.ui.star.rating.move-left#learning_star
-        .rating-catergory.eight.wide.column
-          p Management
-          div.ui.star.rating.move-left#management_star
+  div.content  
+    .ui.grid.no.margin
+      .rating-catergory.eight.wide.column
+        p Culture
+        div.ui.star.rating.move-left#culture_star
+      .rating-catergory.eight.wide.column
+        p Environment
+        div.ui.star.rating.move-left#environment_star
+      .rating-catergory.eight.wide.column
+        p Cleanliness
+        div.ui.star.rating.move-left#cleanliness_star
+      .rating-catergory.eight.wide.column
+        p Location
+        div.ui.star.rating.move-left#location_star
+      .rating-catergory.eight.wide.column
+        p Learning
+        div.ui.star.rating.move-left#learning_star
+      .rating-catergory.eight.wide.column
+        p Management
+        div.ui.star.rating.move-left#management_star
+    br
+    = simple_form_for @rating, url: company_ratings_path(@company), method: :post, remote: true do |form|
+      = form.simple_fields_for :review do |review_form|
+        div.ui.form
+         div.field
+          = review_form.input :body, label: false, placeholder: 'Write your review here'
   div.actions
     div.ui.button.cancel
       | Cancel
@@ -190,39 +195,46 @@ javascript:
     })
   ;
   
+  $('.rating-star')
+    .rating({
+      maxRating: 5,
+      interactive: false
+    })
+  ;
+  
   $('#culture_star')
     .rating({
-      interactive: false
+      maxRating: 5,
     })
   ;
   
   $('#environment_star')
     .rating({
-      interactive: false
+      maxRating: 5,
     })
   ;
   
   $('#cleanliness_star')
     .rating({
-      interactive: false
+      maxRating: 5,
     })
   ;
   
   $('#location_star')
     .rating({
-      interactive: false
+      maxRating: 5,
     })
   ;
   
   $('#learning_star')
     .rating({
-      interactive: false
+      maxRating: 5,
     })
   ;
   
   $('#management_star')
     .rating({
-      interactive: false
+      maxRating: 5,
     })
   ;
   
