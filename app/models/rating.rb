@@ -35,6 +35,7 @@
 class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :company
+  has_one :review
 
   scope :not_empty, -> { where(empty: false) }
 end
