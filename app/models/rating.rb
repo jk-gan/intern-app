@@ -35,6 +35,9 @@
 class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :company
+  has_one :review, dependent: :destroy
 
   scope :not_empty, -> { where(empty: false) }
+
+  accepts_nested_attributes_for :review
 end

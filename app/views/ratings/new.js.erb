@@ -1,0 +1,95 @@
+$('#modal-review-field').html("<%= j (render 'ratings/new', company: @rating.company) %>");
+
+$('#culture_star')
+  .rating({
+    maxRating: 5,
+    clearable: true,
+    onRate(value) {
+      $('#rating_culture_score').val(value)
+    }
+  })
+;
+
+$('#environment_star')
+  .rating({
+    maxRating: 5,
+    clearable: true,
+    onRate(value) {
+      $('#rating_environment_score').val(value)
+    }
+  })
+;
+
+$('#cleanliness_star')
+  .rating({
+    maxRating: 5,
+    clearable: true,
+    onRate(value) {
+      $('#rating_cleanliness_score').val(value)
+    }
+  })
+;
+
+$('#location_star')
+  .rating({
+    maxRating: 5,
+    clearable: true,
+    onRate(value) {
+      $('#rating_location_score').val(value)
+    }
+  })
+;
+
+$('#learning_star')
+  .rating({
+    maxRating: 5,
+    clearable: true,
+    onRate(value) {
+      $('#rating_learning_score').val(value)
+    }
+  })
+;
+
+$('#management_star')
+  .rating({
+    maxRating: 5,
+    clearable: true,
+    onRate(value) {
+      $('#rating_management_score').val(value)
+    }
+  })
+;
+
+$('.ui.modal')
+  .modal({
+    blurring: true
+  })
+  .modal('setting', 'transition', 'fade up')
+  .modal('attach events', '.review-button', 'show')
+  .modal({
+    onDeny() {
+      alert('Wait not yet!');
+      return false;
+    },
+    onApprove() {
+      $.ajax({
+        url: '<%= "/companies/#{@rating.company.id}/ratings/#{@rating.id}" %>',
+        type: 'POST',
+        data: {
+          // authenticity_token: $('input[name=authenticity_token]').val(),
+          rating: {
+            culture_score: $('#rating_culture_score').val(),
+            environment_score: $('#rating_environment_score').val(),
+            cleanliness_score: $('#rating_cleanliness_score').val(),
+            location_score: $('#rating_location_score').val(),
+            learning_score: $('#rating_learning_score').val(),
+            management_score: $('#rating_management_score').val(),
+            review_attributes: {
+              body: $('#rating_review_attributes_body').val()
+            }
+          }
+        }
+      });
+    }
+  })
+;
