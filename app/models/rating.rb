@@ -35,7 +35,7 @@
 class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :company
-  has_one :review
+  has_one :review, dependent: :destroy
 
   scope :not_empty, -> { where(empty: false) }
 
